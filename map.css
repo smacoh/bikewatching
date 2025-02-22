@@ -1,16 +1,119 @@
-html, body {
-    margin: 0;
-    padding: 5;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
-  }
-     
+:root {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+}
+
 #map {
-    width: 100%;    /* Adjust width to your desired size */
-    height: 100%;   /* Adjust height to your desired size */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
-    border-radius: 8px; /* Optional: rounded corners */
+  width: 100%;
+  /* Adjust width to your desired size */
+  height: 100%;
+  /* Adjust height to your desired size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Optional: subtle shadow for effect */
+  border-radius: 8px;
+  /* Optional: rounded corners */
+}
+
+#map svg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#map svg circle {
+  pointer-events: auto;
+  /* fill: steelblue; */
+  fill-opacity: 0.6;
+  stroke: white;
+  stroke-width: 1;
+}
+
+time,
+em {
+  margin-left: auto;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+}
+
+header label {
+  margin-left: auto;
+}
+
+#time-slider {
+  width: 350px;
+}
+
+#any-time {
+  font-weight: lighter;
+  color: gray;
+}
+
+#selected-time {
+  font-weight: bold;
+}
+
+circle {
+  --color: color-mix(in oklch,
+      var(--color-departures) calc(100% * var(--departure-ratio)),
+      var(--color-arrivals));
+  fill: var(--color);
+  pointer-events: auto;
+}
+
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  margin-left: auto;
+}
+
+.legend {
+  display: flex;
+  margin-top: 1em;
+  gap: 1px;
+  width: 100%;
+  color: white;
+}
+
+.legend>div {
+  flex: 1;
+  padding: 0.2em 0.6em;
+}
+
+.legend> :nth-child(1) {
+  background-color: var(--color-departures);
+  border-radius: 8px 0 0 8px;
+}
+
+.legend> :nth-child(2) {
+  --departure-ratio: 0.5;
+  background-color: color-mix(in oklch,
+      var(--color-departures) calc(100% * var(--departure-ratio)),
+      var(--color-arrivals));
+  text-align: center;
+}
+
+.legend> :nth-child(3) {
+  background-color: var(--color-arrivals);
+  text-align: end;
+  border-radius: 0 8px 8px 0;
 }
