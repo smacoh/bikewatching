@@ -81,8 +81,10 @@ circle {
 
 header {
   display: flex;
-  gap: 1em;
+  justify-content: space-between;
   align-items: baseline;
+  width: 100%;
+  padding: 0 1em;
   margin-left: auto;
 }
 
@@ -92,6 +94,7 @@ header {
   gap: 1px;
   width: 100%;
   color: white;
+  font-weight: bold;
 }
 
 .legend>div {
@@ -101,7 +104,6 @@ header {
 
 .legend> :nth-child(1) {
   background-color: var(--color-departures);
-  border-radius: 8px 0 0 8px;
 }
 
 .legend> :nth-child(2) {
@@ -115,5 +117,4 @@ header {
 .legend> :nth-child(3) {
   background-color: var(--color-arrivals);
   text-align: end;
-  border-radius: 0 8px 8px 0;
 }
